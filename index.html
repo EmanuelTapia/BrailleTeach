@@ -7,8 +7,9 @@
     <link rel="icon"  href="./ico/ico-logo.png">
     <link rel="stylesheet" type="text/css" href="./css/normalize.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    
 </head>
-<body class="flex flex-col h-dvh w-dvh">
+<body class="flex flex-col h-dvh w-dvh ">
     <header class="flex justify-center items-center h-[10%] w-full">
         <nav class="flex justify-between items-center h-[80%] w-11/12">   
             <a href="./index.html"><img src="./ico/ico-logo.png" alt="ico-logo" class="h-[6vh]"></a>
@@ -18,15 +19,22 @@
     </header>
     <main class="flex flex-col h-full w-full">
         <section class="flex justify-center items-center h-[5%] bg-[#4A4444] ">
-            <p class="text-[2vh] text-slate-50 font-mono tracking-[0.25vh]">Toca, escucha, aprende: Braille Teach, donde cada juego es una experiencia de aprendizaje con voz</p>
+            <p id="frase" class="text-[2vh] text-slate-50 font-mono tracking-[0.25vh]">Toca, escucha, aprende: Braille Teach, donde cada juego es una experiencia de aprendizaje con voz</p>
         </section>
         <section>
-
+            <div id="">
+                Bienvenido a Braille Teach
+            </div>
         </section>
     </main>
 
     <footer>
-
     </footer>
+
+    <script src="./js/voz.js"></script>
+    <script>
+        mensaje('frase');
+    </script>
+
 </body>
 </html>
