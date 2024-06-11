@@ -49,7 +49,7 @@ section.innerHTML = `
 
 document.body.appendChild(section);
 
-import { mensaje } from './voz.js';
+import { mensaje } from './mensaje.js';
 
 const modal = document.getElementById('modal');
 let isOpen = false;
