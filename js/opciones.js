@@ -70,61 +70,66 @@ document.addEventListener("keydown", function(event) {
     }
   }
 
+if (isOpen){
   if (event.key.toLowerCase() === "f") {
-    location.assign("./tutorial.html");
+    window.location.href= "./tutorial.html";
     speechSynthesis.cancel();
     }
   if (event.key.toLowerCase() === "d") {
-    location.assign("./aprender.html");
+    window.location.href= "./aprender.html";
     speechSynthesis.cancel();
     }
   if (event.key.toLowerCase() === "s") {
-    location.assign("./practicar.html");
+    window.location.href= "./practicar.html";
     speechSynthesis.cancel();
     }
   if (event.key.toLowerCase() === "j") {
-    location.assign("./desafio.html");
+    window.location.href= "./desafio.html";
     speechSynthesis.cancel();
     }
   if (event.key.toLowerCase() === "k") {
-    location.assign("./miCuenta.html");
+    window.location.href= "./miCuenta.html";
     speechSynthesis.cancel();
     }
   if (event.key.toLowerCase() === "l") {
-    location.assign("./administrar.html");
+    window.location.href= "./administrar.html";
     speechSynthesis.cancel();
     }
+
+    window.tutorial = function(){
+      window.location.href= "./tutorial.html";
+      speechSynthesis.cancel();
+    }
+    window.aprender = function(){
+      window.location.href= "./aprender.html";
+      speechSynthesis.cancel();
+    }
+    window.practicar = function(){
+      window.location.href= "./practicar.html";
+      speechSynthesis.cancel();
+    }
+    window.desafio = function(){
+      window.location.href= "./desafio.html";
+      speechSynthesis.cancel();
+    }
+    window.miCuenta = function(){
+      window.location.href= "./miCuenta.html";
+      speechSynthesis.cancel();
+    }
+    window.administrar = function(){
+      window.location.href= "./administrar.html";
+      speechSynthesis.cancel();
+    }
+
+    window.cerrarModal = function(){
+      modal.classList.remove('opacity-100', 'pointer-events-auto' , 'transition-opacity', 'duration-1000');
+      isOpen = false;
+      speechSynthesis.cancel();
+    }
+}
+  
 
 });
 
 
-window.tutorial = function(){
-    location.assign("./tutorial.html");
-    speechSynthesis.cancel();
-  }
-  window.aprender = function(){
-    location.assign("./aprender.html");
-    speechSynthesis.cancel();
-  }
-  window.practicar = function(){
-    location.assign("./practicar.html");
-    speechSynthesis.cancel();
-  }
-  window.desafio = function(){
-    location.assign("./desafio.html");
-    speechSynthesis.cancel();
-  }
-  window.miCuenta = function(){
-    location.assign("./miCuenta.html");
-    speechSynthesis.cancel();
-  }
-  window.administrar = function(){
-    location.assign("./administrar.html");
-    speechSynthesis.cancel();
-  }
-
-  window.cerrarModal = function(){
-    modal.classList.remove('opacity-100', 'pointer-events-auto' , 'transition-opacity', 'duration-1000');
-    isOpen = false;
-    speechSynthesis.cancel();
-  }
+  
