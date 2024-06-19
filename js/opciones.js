@@ -49,18 +49,15 @@ section.innerHTML = `
 
 document.body.appendChild(section);
 
-import { mensaje } from './mensaje.js';
-
 const modal = document.getElementById('modal');
-let isOpen = false;
-
+window.isOpen = false;
 
 document.addEventListener("keydown", function(event) {
     
   if (event.key === "Enter") {
     if (!isOpen) {
       modal.classList.add('opacity-100', 'pointer-events-auto', 'transition-opacity', 'duration-700');
-      mensaje("opciones");
+      window.voz("opciones");
       isOpen = true;
 
     } else {

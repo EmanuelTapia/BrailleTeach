@@ -11,6 +11,5 @@ document.addEventListener("keydown", function(event) {
     }
   });
 
-import { mensaje } from './mensaje.js';
+window.voz("bienvenido");
 
-mensaje("bienvenido")
