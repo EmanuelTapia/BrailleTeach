@@ -458,4 +458,52 @@ template {
   z-index: 1;
 }
 
+.secciones-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 1;
+  padding: 20px;
+  flex-wrap: wrap;
+}
 
+.seccion {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  background-color: #f1f1f1;
+  border: 2px solid #ddd;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.seccion img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.seccion:hover img {
+  transform: scale(1.1);
+}
+
+.seccion .texto-seccion {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.seccion:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
