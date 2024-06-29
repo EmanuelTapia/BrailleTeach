@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Braille Teach | Mi cuenta</title>
     <link rel="icon"  href="./ico/ico-logo.png">
-    <link rel="stylesheet" type="text/css" href="./css/micuenta.css">
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -34,12 +34,26 @@
                 <h1 class="text-[7vh] font-serif font-medium text-[#4A4444] tracking-[0.4vh]">MI CUENTA</h1>
             </article>
             <article id="modulo" class="flex justify-center h-[70%] border-b-[0.3vh] border-[#4A4444]">
-                
+                <div class="esferas-container">
+                    <div class="esfera">
+                        <a href="index.html">
+                            <div class="inner-esfera"><p style="font-size: x-large;">INFORMACIÓN</p></div>
+                        </a>
+                    </div>
+                    <div class="esfera">
+                        <a href="index.html">
+                            <div class="inner-esfera"><p style="font-size: x-large;">MI PROGRESO</p></div>
+                        </a>
+                    </div>
+                    <div class="esfera">
+                        <a href="index.html">
+                            <div class="inner-esfera"><p style="font-size: x-large;">INSIGNIAS</p></div>
+                        </a>
+                    </div>
+                </div>
             </article>
             <article class="grid grid-cols-5 gap-1 place items-center h-[15%]">
-                <button id="btnregresar" class="flex justify-center transition hover:scale-75">
-                    <p id="regresar" class="flex items-center text-slate-50 text-[2.5vh] font-medium px-[4vh] py-2 bg-orange-600 rounded-[1.5vh] ">REGRESAR</p>
-                </button>
+                <button class="dynamic-button" onclick="history.back()">REGRESAR</button>
                 
                 <button></button>
                 <button></button>
