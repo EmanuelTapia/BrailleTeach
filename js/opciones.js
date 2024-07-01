@@ -55,6 +55,7 @@ window.isOpen = false;
 document.addEventListener("keydown", function(event) {
     
   if (event.key === "Enter") {
+    speechSynthesis.cancel();
     if (!isOpen) {
       modal.classList.add('opacity-100', 'pointer-events-auto', 'transition-opacity', 'duration-700');
       window.voz("opciones");
@@ -62,7 +63,6 @@ document.addEventListener("keydown", function(event) {
 
     } else {
       modal.classList.remove('opacity-100', 'pointer-events-auto', 'transition-opacity', 'duration-1000');
-      speechSynthesis.cancel();
       isOpen = false;
     }
   }
