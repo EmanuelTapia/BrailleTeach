@@ -353,3 +353,157 @@ template {
 [hidden] {
   display: none;
 }
+
+/************************************/
+
+.esferas-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.esfera {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  background: linear-gradient(135deg, #ffdd61, #de4d3e);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.esfera::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: transform 0.5s, opacity 0.5s;
+  opacity: 0;
+}
+
+.esfera:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.esfera:hover::before {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.inner-esfera {
+  position: relative;
+  z-index: 1;
+}
+.dynamic-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #61ffd0, #de4d3e);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.dynamic-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, left 0.3s ease;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+}
+
+.dynamic-button:hover::before {
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+}
+
+.dynamic-button:hover {
+  background: linear-gradient(135deg, #de4d3e, #ff6f61);
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dynamic-button:active {
+  transform: scale(0.95);
+}
+
+.dynamic-button span {
+  position: relative;
+  z-index: 1;
+}
+
+.secciones-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 1;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.seccion {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  background-color: #f1f1f1;
+  border: 2px solid #ddd;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.seccion img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.seccion:hover img {
+  transform: scale(1.1);
+}
+
+.seccion .texto-seccion {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.seccion:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
