@@ -1,12 +1,13 @@
 
-fetch('http://localhost:8080/abecedario')
+fetch('http://localhost:8080/signo')
   .then(response => response.json())
   .then(data => {
     window.divs = [];
     data.forEach(item =>{
 
-      let idAbecedario= item.idAbecedario;
-      let letra = item.letra;
+      let idSigno= item.idSigno;
+      let signo = item.signo;
+      let nombre = item.nombre;
       let codigo = item.codigo;
       let cadena = codigo.toString().split('').join(' ');
 
@@ -16,14 +17,14 @@ fetch('http://localhost:8080/abecedario')
             <div class="flex items-center h-full w-7/12"">
               <div id="guia" class="flex justify-center items-center h-full w-4/12 ">
                   <button onclick="guia()" class="transition hover:scale-75"><img src="./ico/ico-sonido.png" alt="ico-sonido" class=" size-[15vh]"></button>
-                  <p  class="hidden">Para formar la letra ${letra}, presionar punto ${cadena}</p>
+                  <p  class="hidden">Para formar el signo ${nombre}, presionar punto ${cadena}</p>
                   
               </div>
-              <p id="mensajeExcelente" class="hidden">¡Excelente!. Presione 1 para la siguiente letra</p>
-              <p id="mensajeExcelenteTerminar" class="hidden">¡Felicidades!. Terminaste el módulo Aprender Abecedario. Presione 1 para terminar y regresar al menú de aprender.</p>
+              <p id="mensajeExcelente" class="hidden">¡Excelente!. Presione 1 para el siguiente signo</p>
+              <p id="mensajeExcelenteTerminar" class="hidden">¡Felicidades!. Terminaste el módulo Aprender Signo. Presione 1 para terminar y regresar al menú de aprender.</p>
               <p id="mensajeIncorrecto" class="hidden">¡Incorrecto!. Presione 1 para volver a intentar</p>
               <div class="flex justify-center items-center h-full w-4/12 pb-[10vh]">
-                  <p class="text-[40vh] font-serif font-medium">${letra}</p>
+                  <p class="text-[40vh] font-serif font-medium">${signo}</p>
               </div>
               <div id="tablero"  class="flex justify-center items-center h-full w-4/12 space-x-[5vh] ">
                   <div class="flex flex-col space-y-[5vh]">
@@ -39,7 +40,7 @@ fetch('http://localhost:8080/abecedario')
               </div>
             </div>
           `,
-          id: idAbecedario,
+          id: 1,
           codigo: codigo
           
           
@@ -47,6 +48,7 @@ fetch('http://localhost:8080/abecedario')
       );
       mostrarModulo();
   })
+  guia();
 })
   .catch(error => console.error('Error:', error));
 
@@ -173,6 +175,7 @@ function mostrarModulo(){
 }
 
 function guia(){
+  window.speechSynthesis.cancel();  
   window.voz("guia");
 }
 

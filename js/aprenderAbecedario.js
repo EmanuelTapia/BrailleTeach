@@ -39,14 +39,17 @@ fetch('http://localhost:8080/abecedario')
               </div>
             </div>
           `,
-          id: idAbecedario,
+          id: 1,
           codigo: codigo
           
           
         },
       );
       mostrarModulo();
+      
+      
   })
+  guia();
 })
   .catch(error => console.error('Error:', error));
 
@@ -176,4 +179,3 @@ function guia(){
   window.voz("guia");
 }
 
- 
