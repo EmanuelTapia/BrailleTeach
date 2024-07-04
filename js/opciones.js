@@ -7,7 +7,7 @@ section.className = 'flex justify-center items-center fixed inset-0 bg-[#111111b
 section.innerHTML = `
     <div id="modal_container" class="flex flex-col h-[60%] w-[50%] bg-slate-200 rounded-xl">
 
-        <p id="opciones" class="hidden">Presione uno de las opciones, tecla 1 para Tutorial, 2 para Aprender, 3 para Practicar, 4 para Desafio y 5 para Mi Cuenta</p>
+        <p id="opciones" class="hidden">Presione uno de las opciones, tecla 1 para Tutorial, 2 para Aprender, 3 para Practicar y 4 para Juegos</p>
         <div class="flex justify-center items-center h-[15%] bg-slate-50 border-b-2 border-[#4A4444] rounded-xl">
             <h1 class="text-[6vh] text-[#4A4444] font-mono font-medium text-center tracking-[0.25vh] w-11/12">Módulos</h1>
             <button onclick="cerrarModal()" class="flex h-full w-1/12">
@@ -28,17 +28,9 @@ section.innerHTML = `
                 <img src="./ico/ico-practicar.png" alt="ico-tutorial" class="size-[8vh]">
                 <p class="text-center font-mono text-[2vh]">Practicar</p>
             </button>
-            <button onclick="desafio()" class="flex flex-col space-y-[1vh] justify-center items-center bg-slate-50 p-[2vh] pb-0 size-auto rounded-[2vh] border-[0.3vh] border-blue-500 transition hover:scale-75">
+            <button onclick="juego()" class="flex flex-col space-y-[1vh] justify-center items-center bg-slate-50 p-[2vh] pb-0 size-auto rounded-[2vh] border-[0.3vh] border-blue-500 transition hover:scale-75">
                 <img src="./ico/ico-desafio.png" alt="ico-tutorial" class="size-[8vh]">
-                <p class="text-center font-mono text-[2vh]">Desafío</p>
-            </button>
-            <button onclick="miCuenta()" class="flex flex-col space-y-[1vh] justify-center items-center bg-slate-50 p-[2vh] pb-0 size-auto rounded-[2vh] border-[0.3vh] border-orange-400 transition hover:scale-75">
-                <img src="./ico/ico-miCuenta.png" alt="ico-tutorial" class="size-[8vh]">
-                <p class="text-center font-mono text-[2vh]">Mi Cuenta</p>
-            </button>
-            <button onclick="administrar()" class="flex flex-col space-y-[1vh] justify-center items-center bg-slate-50 p-[2vh] pb-0 size-auto rounded-[2vh] border-[0.3vh] border-purple-500 transition hover:scale-75">
-                <img src="./ico/ico-administrar.png" alt="ico-tutorial" class="size-[8vh]">
-                <p class="text-center font-mono text-[2vh]">Administrar</p>
+                <p class="text-center font-mono text-[2vh]">Juegos</p>
             </button>
             
         </div>
@@ -69,7 +61,7 @@ document.addEventListener("keydown", function(event) {
 
 if (isOpen){
   if (event.key.toLowerCase() === "f") {
-    window.location.href= "./tutorial.html";
+    window.location.href= "./tutorial1.html";
     speechSynthesis.cancel();
     }
   if (event.key.toLowerCase() === "d") {
@@ -81,20 +73,12 @@ if (isOpen){
     speechSynthesis.cancel();
     }
   if (event.key.toLowerCase() === "j") {
-    window.location.href= "./desafio.html";
-    speechSynthesis.cancel();
-    }
-  if (event.key.toLowerCase() === "k") {
-    window.location.href= "./miCuenta.html";
-    speechSynthesis.cancel();
-    }
-  if (event.key.toLowerCase() === "l") {
-    window.location.href= "./administrar.html";
+    window.location.href= "./juegos.html";
     speechSynthesis.cancel();
     }
 
     window.tutorial = function(){
-      window.location.href= "./tutorial.html";
+      window.location.href= "./tutorial1.html";
       speechSynthesis.cancel();
     }
     window.aprender = function(){
@@ -106,17 +90,10 @@ if (isOpen){
       speechSynthesis.cancel();
     }
     window.desafio = function(){
-      window.location.href= "./desafio.html";
+      window.location.href= "./juegos.html";
       speechSynthesis.cancel();
     }
-    window.miCuenta = function(){
-      window.location.href= "./miCuenta.html";
-      speechSynthesis.cancel();
-    }
-    window.administrar = function(){
-      window.location.href= "./administrar.html";
-      speechSynthesis.cancel();
-    }
+    
 
     window.cerrarModal = function(){
       modal.classList.remove('opacity-100', 'pointer-events-auto' , 'transition-opacity', 'duration-1000');
