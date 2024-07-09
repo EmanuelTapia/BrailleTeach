@@ -61,10 +61,6 @@ document.addEventListener("keydown", function(event){
         cont7 = true;
     };
 
-    if(event.key.toLowerCase() === " " && cont7){
-        window.speechSynthesis.cancel();
-        window.location.href = "./tutorial3.html"
-    };
     
 
 });
