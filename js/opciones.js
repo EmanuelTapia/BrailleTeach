@@ -1,3 +1,4 @@
+
 var section = document.createElement('section');
 
 section.id = 'modal';
@@ -46,9 +47,11 @@ window.isOpen = false;
 
 document.addEventListener("keydown", function(event) {
     
-  if (event.key === "Enter") {
+  if (event.key.toLowerCase() === "h") {
     speechSynthesis.cancel();
-    if (!isOpen) {
+    
+    if (!isOpen && !window.isOpenVentana) {
+      window.mensaje("Módulos");
       modal.classList.add('opacity-100', 'pointer-events-auto', 'transition-opacity', 'duration-700');
       window.voz("opciones");
       isOpen = true;

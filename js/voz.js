@@ -6,3 +6,11 @@ window.voz = function(id){
     
     window.speechSynthesis.speak(mensaje);
 }
+
+window.mensaje = function(texto){
+    const mensaje = new SpeechSynthesisUtterance(`${texto}`);
+    mensaje.rate=1;
+    mensaje.pitch=1;
+    
+    window.speechSynthesis.speak(mensaje);
+}

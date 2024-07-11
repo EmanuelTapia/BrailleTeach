@@ -60,6 +60,10 @@ document.addEventListener("keydown", function(event){
         window.voz("terminar");
         cont7 = true;
     };
+    if(event.key.toLowerCase() === " " && cont6 ){
+        window.speechSynthesis.cancel();
+        window.location.href = "./tutorial3.html";
+    };
 
     
 

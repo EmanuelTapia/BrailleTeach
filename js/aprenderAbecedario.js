@@ -1,3 +1,5 @@
+window.speechSynthesis.cancel();  
+window.mensaje("Aprender Abecedario");
 
 fetch('http://localhost:8080/abecedario')
   .then(response => response.json())
