@@ -14,15 +14,14 @@
 <body class="flex flex-col h-dvh w-dvh ">
     <header class="flex justify-center items-center h-[8%] w-full">
         <nav class="flex justify-between items-center h-[80%] w-11/12">   
-            <a ><img src="./ico/ico-logo.png" alt="ico-logo" class="h-[6vh]"></a>
+            <a href="./index.html"><img src="./ico/ico-logo.png" alt="ico-logo" class="h-[6vh]"></a>
             <div class="flex justify-center items-center space-x-[7vh]">
-                <a href="./tutorial.html" class="text-[2.5vh] font-sans font-medium text-[#4A4444]   tracking-[0.25vh] transition hover:underline decoration-[0.25vh] underline-offset-4 hover:scale-125">Tutorial</a>
+                <a href="./tutorial1.html" class="text-[2.5vh] font-sans font-medium text-[#4A4444]   tracking-[0.25vh] transition hover:underline decoration-[0.25vh] underline-offset-4 hover:scale-125">Tutorial</a>
                 <a href="./aprender.html" class="text-[2.5vh] font-sans font-medium text-[#4A4444]   tracking-[0.25vh] transition hover:underline decoration-[0.25vh] underline-offset-4 hover:scale-125">Aprender</a>
                 <a href="./practicar.html" class="text-[2.5vh] font-sans font-medium text-[#4A4444]   tracking-[0.25vh] transition hover:underline decoration-[0.25vh] underline-offset-4 hover:scale-125">Practicar</a>
-                <a href="./desafio.html" class="text-[2.5vh] font-sans font-medium text-[#4A4444]   tracking-[0.25vh] transition underline hover:underline decoration-[0.25vh] underline-offset-4 hover:scale-125">Desafío</a>
-                <a href="./administrar.html" class="text-[2.5vh] font-sans font-medium text-[#4A4444]   tracking-[0.25vh] transition hover:underline decoration-[0.25vh] underline-offset-4 hover:scale-125">Administrar</a>
+                <a href="./juegos.html" class="text-[2.5vh] font-sans font-medium text-[#4A4444]   tracking-[0.25vh] transition underline hover:underline decoration-[0.25vh] underline-offset-4 hover:scale-125">Juegos</a>
             </div>
-            <a href="./miCuenta.html" class="text-[2.5vh] font-sans font-medium text-[#4A4444]   tracking-[0.25vh] transition hover:underline decoration-[0.25vh] underline-offset-4 hover:scale-125">Mi Cuenta</a>
+            <a href="./miCuenta.html" class="text-[2.5vh] font-sans font-medium text-[#4A4444]   tracking-[0.25vh] transition hover:underline decoration-[0.25vh] underline-offset-4 hover:scale-125"></a>
         </nav>
     </header>
     <main class="flex flex-col h-full w-full">
@@ -32,49 +31,27 @@
         <section class="flex flex-col h-full">
             <article class="flex flex-col justify-center items-center h-[15%] border-b-[0.3vh] border-[#4A4444]">
                 <h1 class="text-[7vh] font-serif font-medium text-[#4A4444] tracking-[0.4vh]">JUEGOS</h1>
+                <p id="bienvenida" class="hidden">
+                    Módulo Juegos. Presione 1 para Sonido de Animales, 2 para Operaciones Matemáticas y 3 para Mucho Poco Nada.
+                </p>
             </article>
-            <article id="modulo" class="flex justify-center h-[70%] border-b-[0.3vh] border-[#4A4444]">
-                <div class="secciones-container">
-                    <div class="seccion">
-                        <a href="index.html">
-                            <img src="./img/animalesaudicion.JPG" alt="Imagen 1">
-                            <div class="texto-seccion">SONIDO DE ANIMALES</div>
-                        </a>
-                    </div>
-                    <div class="seccion">
-                        <a href="index.html">
-                            <img src="./img/matema.PNG" alt="Imagen 2">
-                            <div class="texto-seccion">OPERACIONES MATEMÁTICASs</div>
-                        </a>
-                    </div>
-                    <div class="seccion">
-                        <a href="index.html">
-                            <img src="./img/laberinto.PNG" alt="Imagen 3">
-                            <div class="texto-seccion">LABERINTO</div>
-                        </a>
-                    </div>
-                    <div class="seccion">
-                        <a href="index.html">
-                            <img src="./img/poco o nada.PNG" alt="Imagen 4">
-                            <div class="texto-seccion">MUCHO-POCO-NADA</div>
-                        </a>
-                    </div>
-                    <div class="seccion">
-                        <a href="index.html">
-                            <img src="./img/cuentos.PNG" alt="Imagen 5">
-                            <div class="texto-seccion">CUENTOS</div>
-                        </a>
-                    </div>
-                </div>
-            </article>
-            <article class="grid grid-cols-5 gap-1 place items-center h-[15%]">
-                <button class="dynamic-button" onclick="history.back()">REGRESAR</button>
+            <article id="modulo" class="grid grid-cols-3 gap-[0vh] place-items-center h-[85%]">
+                <button class="flex flex-col bg-green-300 h-[45vh] w-[35vh] rounded-[2vh] border-[0.2vh] border-slate-500 transition hover:scale-[0.9]">
+                    <img src="./img/img-animales.png" alt="animales" class="h-[30vh] rounded-[2vh]">
+                    <span class="flex items-center justify-center h-[15vh] w-full text-[4vh] font-bold font-mono tracking-[0.5vh]">SONIDO DE ANIMALES</span>
+                </button>
+                <button class="flex flex-col bg-red-300 h-[45vh] w-[35vh] rounded-[2vh] border-[0.2vh] border-slate-500 transition hover:scale-[0.9]">
+                    <img src="./img/img-operacionesMatematicas.png" alt="img-operacionesMatematicas" class="h-[30vh] rounded-[2vh]">
+                    <span class="flex items-center justify-center h-[15vh] w-full text-[4vh] font-bold font-mono tracking-[0.5vh]">OPERACIONES MATEMÁTICAS</span>
+                </button>
+                <button class="flex flex-col bg-amber-400 h-[45vh] w-[35vh] rounded-[2vh] border-[0.2vh] border-slate-500 transition hover:scale-[0.9]">
+                    <img src="./img/img-mucho-poco-nada.png" alt="img-mucho-poco-nada" class="h-[30vh] rounded-[2vh]">
+                    <span class="flex items-center justify-center h-[15vh] w-full text-[4vh] font-bold font-mono tracking-[0.5vh]">MUCHO-POCO-NADA</span>
+                </button>
                 
-                <button></button>
-                <button></button>
-                <button></button>
                 
             </article>
+            
         </section>
 
     </main>
@@ -83,6 +60,6 @@
     </footer>
     <script type="" src="./js/voz.js"></script>
     <script type="" src="./js/opciones.js"></script>
-    <script type="" src="./js/tablero.js"></script>
+    <script type="" src="./js/juegos.js"></script>
 </body>
 </html>

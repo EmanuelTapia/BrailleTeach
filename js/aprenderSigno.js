@@ -1,3 +1,5 @@
+window.speechSynthesis.cancel();  
+window.mensaje("Aprender Signos");
 
 fetch('http://localhost:8080/signo')
   .then(response => response.json())
@@ -24,7 +26,7 @@ fetch('http://localhost:8080/signo')
               <p id="mensajeExcelenteTerminar" class="hidden">¡Felicidades!. Terminaste el módulo Aprender Signo. Presione 1 para terminar y regresar al menú de aprender.</p>
               <p id="mensajeIncorrecto" class="hidden">¡Incorrecto!. Presione 1 para volver a intentar</p>
               <div class="flex justify-center items-center h-full w-4/12 pb-[10vh]">
-                  <p class="text-[40vh] font-serif font-medium">${signo}</p>
+                  <p class="flex text-[40vh] font-serif font-medium">${signo}</p>
               </div>
               <div id="tablero"  class="flex justify-center items-center h-full w-4/12 space-x-[5vh] ">
                   <div class="flex flex-col space-y-[5vh]">
@@ -175,7 +177,6 @@ function mostrarModulo(){
 }
 
 function guia(){
-  window.speechSynthesis.cancel();  
   window.voz("guia");
 }
 

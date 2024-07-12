@@ -1,9 +1,18 @@
+window.speechSynthesis.cancel();  
+window.mensaje("Practicar Signos");
 
 fetch('http://localhost:8080/signo')
   .then(response => response.json())
   .then(data => {
+    // Mezclar el arreglo de datos
+    let shuffledData = data.sort(() => 0.5 - Math.random());
+
+    // Seleccionar los primeros 5 elementos del arreglo mezclado
+    let selectedData = shuffledData.slice(0, 5);
+
+    // Procesar los 5 elementos seleccionados
     window.divs = [];
-    data.forEach(item =>{
+    selectedData.forEach(item => {
 
       let idSigno= item.idSigno;
       let signo = item.signo;
@@ -190,7 +199,6 @@ function mostrarModulo(){
 }
 
 function guia(){
-  window.speechSynthesis.cancel();
   window.voz("guia");
 }
 

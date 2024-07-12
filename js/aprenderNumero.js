@@ -1,3 +1,5 @@
+window.speechSynthesis.cancel();  
+window.mensaje("Aprender Números");
 
 fetch('http://localhost:8080/numero')
   .then(response => response.json())
