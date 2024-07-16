@@ -1,7 +1,10 @@
 window.speechSynthesis.cancel();  
-window.mensaje("Practicar Números");
+//window.mensaje("MUCHO - POCO - NADA");
+//window.voz("introduccion2");
+//window.voz("introduccion1");
+//window.voz("introduccion3");
 
-fetch('http://localhost:8080/numero')
+fetch('http://localhost:8080/muchopoconada')
   .then(response => response.json())
   .then(data => {
     // Mezclar el arreglo de datos
@@ -12,55 +15,92 @@ fetch('http://localhost:8080/numero')
 
     // Procesar los 5 elementos seleccionados
     window.divs = [];
+    let cont = 1;
     selectedData.forEach(item => {
 
-      let idNumero= item.idNumero;
-      let numero = item.numero;
+      let idMuchoPocoNada = item.idMuchoPocoNada;
+      let numero1 = item.numero1;
+      let numero2 = item.numero2;
+      let numero3 = item.numero3;
+      let letra1 = item.letra1;
+      let letra2 = item.letra2;
+      let letra3 = item.letra3;
+      let opcion1 = item.opcion1;
+      let opcion2 = item.opcion2;
+      let opcion3 = item.opcion3;
+      let respuesta = item.respuesta;
       let codigo = item.codigo;
+
       let cadena = codigo.toString().split('').join(' ');
+      
 
       window.divs.push(
         {
+          
           html: `
-            <div class="flex items-center h-full w-7/12"">
-              <div id="guia" class="flex justify-center items-center h-full w-4/12 ">
-                  <button onclick="guia()" class="transition hover:scale-75"><img src="./ico/ico-sonido.png" alt="ico-sonido" class=" size-[15vh]"></button>
-                  <p  class="hidden">Formar el número ${numero}.</p>
-                  
-              </div>
-              <p id="ayuda" class="hidden">Para formar el número ${numero}, presionar punto ${cadena}</p>
-              <p id="mensajeExcelente" class="hidden">¡Excelente!. Presione 1 para el siguiente número.</p>
-              <p id="mensajeExcelenteTerminar" class="hidden">¡Felicidades!. Terminaste el módulo Practicar Número. Presione 1 para obtener tu puntuación.</p>
-              <p id="mensajeIncorrecto" class="hidden">¡Incorrecto!. Presione 1 para volver a intentar, 2 para tener ayuda.</p>
-              <div class="flex justify-center items-center h-full w-4/12 pb-[10vh]">
-                  <p class="text-[40vh] font-serif font-medium">${numero}</p>
-              </div>
-              <div id="tablero"  class="flex justify-center items-center h-full w-4/12 space-x-[5vh] ">
-                  <div class="flex flex-col space-y-[5vh]">
-                      <div id="f" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
-                      <div id="d" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
-                      <div id="s" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
-                  </div>
-                  <div class="flex flex-col space-y-[5vh]">
-                      <div id="j" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
-                      <div id="k" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
-                      <div id="l" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
-                  </div>
-              </div>
+            
+            <div class="flex flex-col  items-center h-full w-6/12">
+
+                <div class="flex justify-center items-center space-x-[5vh] h-[20%] w-full ">
+                    <button onclick="guia()" class="transition hover:scale-75"><img src="./ico/ico-sonido.png" alt="ico-sonido" class=" size-[8vh]"></button>
+                    <p class="text-[3vh] font-mono text-[#4A4444]">Identificar los números y ordenarlos</p>
+
+                    <p id="pregunta" class="hidden">Pregunta ${cont}.</p>
+                    <p id="guia" class="hidden">${numero1} ${numero2} ${numero3}. Escoge una respuesta, opción ${letra1} ${opcion1}. Opción ${letra2} ${opcion2}. Opción ${letra3} ${opcion3}</p>
+
+                    <p id="ayuda" class="hidden">${numero1} ${numero2} ${numero3} la respuesta era la opción ${respuesta}.Para formar la letra ${respuesta}, presionar punto ${cadena}</p>
+                    <p id="mensajeExcelente" class="hidden">¡Excelente!. Presione 1 para la siguiente pregunta</p>
+                    <p id="mensajeExcelenteTerminar" class="hidden">¡Felicidades!. Terminaste el juego Mucho - Poco - Nada. Presione 1 para obtener tu puntuación.</p>
+                    <p id="mensajeIncorrecto" class="hidden">¡Incorrecto!. Presione 1 para volver a intentar, 2 para tener ayuda.</p>
+                </div>
+                
+                <div class="flex justify-center items-center h-[20%] w-full space-x-[15vh]">
+                    <p class="text-[7vh] font-mono ">${numero1}</p>
+                    <p class="text-[7vh] font-mono ">${numero2}</p>
+                    <p class="text-[7vh] font-mono ">${numero3}</p>
+                </div>
+                <div class="flex flex-col justify-center items-center h-[60%] w-full space-y-[3vh] ">
+                    <div class="flex space-x-[3vh] ">
+                      <p class="text-[3.5vh] font-mono text-[#4A4444]">${letra1})</p>
+                      <p class="text-[3.5vh] font-mono text-[#4A4444]">${opcion1}</p>
+                    </div>
+                    <div class="flex space-x-[3vh]">
+                      <p class="text-[3.5vh] font-mono text-[#4A4444]">${letra2})</p>
+                      <p class="text-[3.5vh] font-mono text-[#4A4444]">${opcion2}</p>
+                    </div>
+                    <div class="flex space-x-[3vh]">
+                      <p class="text-[3.5vh] font-mono text-[#4A4444]">${letra3})</p>
+                      <p class="text-[3.5vh] font-mono text-[#4A4444]">${opcion3}</p>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div id="tablero"  class="flex justify-center items-center h-full w-2/12 space-x-[5vh]">
+                <div class="flex flex-col space-y-[5vh]">
+                    <div id="f" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
+                    <div id="d" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
+                    <div id="s" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
+                </div>
+                <div class="flex flex-col space-y-[5vh]">
+                    <div id="j" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
+                    <div id="k" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
+                    <div id="l" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
+                </div>
             </div>
           `,
           id: 1,
-          codigo: codigo
-          
+          codigo: codigo,
           
         },
       );
       mostrarModulo();
-  })
+      cont++;
+  });
+  pregunta();
   guia();
 })
   .catch(error => console.error('Error:', error));
-
 
 
 //DEFINICION DE VARIABLES
@@ -197,12 +237,13 @@ function siguienteModulo() {
   if (rpta) {
       excelente.classList.remove('opacity-100', 'pointer-events-auto', 'transition-opacity', 'duration-1000');
       if (cont === window.divs.length - 1) {
-          window.location.replace("./resultadoPracticarNumero.html");
+          window.location.replace("./resultadoMuchoPocoNada.html");
       } else {
           cont++;
           contNum++;
           mostrarModulo();
           setTimeout(() => {
+            pregunta();
             guia();
             isChangingModule = false;
         }, 0); // Retrasar la reproducción de la guía para asegurar que el DOM esté completamente actualizado
@@ -242,6 +283,9 @@ function mostrarModulo(){
 function guia(){
   window.voz("guia");
 }
+function pregunta(){
+  window.voz("pregunta");
+}
 
 function ayuda(){
   window.speechSynthesis.cancel();
@@ -254,3 +298,4 @@ window.onbeforeunload = function() {
   localStorage.setItem('contReintentar', contReintentar);
   localStorage.setItem('contAyuda', contAyuda);
 };
+

@@ -47,7 +47,7 @@ window.isOpen = false;
 
 document.addEventListener("keydown", function(event) {
     
-  if (event.key.toLowerCase() === "h") {
+  if (event.key.toLowerCase() === "h" && !window.isOpenVentana) {
     speechSynthesis.cancel();
     
     if (!isOpen && !window.isOpenVentana) {

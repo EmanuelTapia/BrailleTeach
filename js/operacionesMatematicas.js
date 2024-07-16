@@ -1,7 +1,8 @@
 window.speechSynthesis.cancel();  
-window.mensaje("Practicar Números");
+window.mensaje("Operaciones Matemáticas");
+window.voz("introduccion");
 
-fetch('http://localhost:8080/numero')
+fetch('http://localhost:8080/operacionmatematica')
   .then(response => response.json())
   .then(data => {
     // Mezclar el arreglo de datos
@@ -12,55 +13,83 @@ fetch('http://localhost:8080/numero')
 
     // Procesar los 5 elementos seleccionados
     window.divs = [];
+    let cont = 1;
     selectedData.forEach(item => {
 
-      let idNumero= item.idNumero;
-      let numero = item.numero;
+      let idOperacionMatematica = item.idOperacionMatematica;
+      let numero1 = item.numero1;
+      let operador = item.operador;
+      let numero2 = item.numero2;
+      let respuesta = item.respuesta;
       let codigo = item.codigo;
       let cadena = codigo.toString().split('').join(' ');
+      let signo;
+
+      if (operador==="+") {
+        signo = "más";
+      }else if(operador === "-"){
+        signo = "menos";
+      }else if(operador === "/"){
+        signo = "entre";
+      }else if (operador === "x"){
+        signo = "por";
+      };
+
 
       window.divs.push(
         {
+          
           html: `
-            <div class="flex items-center h-full w-7/12"">
-              <div id="guia" class="flex justify-center items-center h-full w-4/12 ">
-                  <button onclick="guia()" class="transition hover:scale-75"><img src="./ico/ico-sonido.png" alt="ico-sonido" class=" size-[15vh]"></button>
-                  <p  class="hidden">Formar el número ${numero}.</p>
-                  
-              </div>
-              <p id="ayuda" class="hidden">Para formar el número ${numero}, presionar punto ${cadena}</p>
-              <p id="mensajeExcelente" class="hidden">¡Excelente!. Presione 1 para el siguiente número.</p>
-              <p id="mensajeExcelenteTerminar" class="hidden">¡Felicidades!. Terminaste el módulo Practicar Número. Presione 1 para obtener tu puntuación.</p>
-              <p id="mensajeIncorrecto" class="hidden">¡Incorrecto!. Presione 1 para volver a intentar, 2 para tener ayuda.</p>
-              <div class="flex justify-center items-center h-full w-4/12 pb-[10vh]">
-                  <p class="text-[40vh] font-serif font-medium">${numero}</p>
-              </div>
-              <div id="tablero"  class="flex justify-center items-center h-full w-4/12 space-x-[5vh] ">
-                  <div class="flex flex-col space-y-[5vh]">
-                      <div id="f" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
-                      <div id="d" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
-                      <div id="s" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
-                  </div>
-                  <div class="flex flex-col space-y-[5vh]">
-                      <div id="j" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
-                      <div id="k" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
-                      <div id="l" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
-                  </div>
-              </div>
+            
+            <div class="flex flex-col  items-center h-full w-6/12 ">
+
+                <div class="flex justify-center items-center space-x-[5vh] h-[25%] w-full ">
+                    <button onclick="guia()" class="transition hover:scale-75"><img src="./ico/ico-sonido.png" alt="ico-sonido" class=" size-[8vh]"></button>
+                    <p class="text-[3vh] font-mono text-[#4A4444]">Resuelve la siguiente operación matemática</p>
+
+                    <p id="pregunta" class="hidden">Pregunta ${cont}.</p>
+                    <p id="guia" class="hidden">${numero1} ${signo}${numero2} </p>
+
+                    <p id="ayuda" class="hidden">${numero1} ${signo}${numero2} es igual a ${respuesta}.Para formar el número ${respuesta}, presionar punto ${cadena}</p>
+                    <p id="mensajeExcelente" class="hidden">¡Excelente!. Presione 1 para la siguiente pregunta</p>
+                    <p id="mensajeExcelenteTerminar" class="hidden">¡Felicidades!. Terminaste el juego Operaciones Matemáticas. Presione 1 para obtener tu puntuación.</p>
+                    <p id="mensajeIncorrecto" class="hidden">¡Incorrecto!. Presione 1 para volver a intentar, 2 para tener ayuda.</p>
+                </div>
+                
+                <div class="flex justify-center items-center h-[50%] w-full space-x-[8vh]">
+                    <p class="text-[10vh] font-mono ">${numero1}</p>
+                    <p class="text-[10vh] font-mono ">${operador}</p>
+                    <p class="text-[10vh] font-mono ">${numero2}</p>
+                    <p class="text-[10vh] font-mono ">=</p>
+                    <p class="text-[10vh] font-mono ">?</p>
+                </div>
+            </div>
+            
+            <div id="tablero"  class="flex justify-center items-center h-full w-2/12 space-x-[5vh]">
+                <div class="flex flex-col space-y-[5vh]">
+                    <div id="f" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
+                    <div id="d" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
+                    <div id="s" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
+                </div>
+                <div class="flex flex-col space-y-[5vh]">
+                    <div id="j" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
+                    <div id="k" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
+                    <div id="l" class="circle h-[8vh] w-[8vh]  rounded-full  border-[0.55vh] border-[#4A4444]"></div>
+                </div>
             </div>
           `,
           id: 1,
-          codigo: codigo
-          
+          codigo: codigo,
           
         },
       );
       mostrarModulo();
-  })
+      cont++;
+  });
+  pregunta();
   guia();
 })
   .catch(error => console.error('Error:', error));
-
 
 
 //DEFINICION DE VARIABLES
@@ -197,12 +226,13 @@ function siguienteModulo() {
   if (rpta) {
       excelente.classList.remove('opacity-100', 'pointer-events-auto', 'transition-opacity', 'duration-1000');
       if (cont === window.divs.length - 1) {
-          window.location.replace("./resultadoPracticarNumero.html");
+          window.location.replace("./resultadoOperacionesMatematicas.html");
       } else {
           cont++;
           contNum++;
           mostrarModulo();
           setTimeout(() => {
+            pregunta();
             guia();
             isChangingModule = false;
         }, 0); // Retrasar la reproducción de la guía para asegurar que el DOM esté completamente actualizado
@@ -242,6 +272,9 @@ function mostrarModulo(){
 function guia(){
   window.voz("guia");
 }
+function pregunta(){
+  window.voz("pregunta");
+}
 
 function ayuda(){
   window.speechSynthesis.cancel();
@@ -254,3 +287,4 @@ window.onbeforeunload = function() {
   localStorage.setItem('contReintentar', contReintentar);
   localStorage.setItem('contAyuda', contAyuda);
 };
+

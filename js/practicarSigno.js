@@ -31,7 +31,7 @@ fetch('http://localhost:8080/signo')
               </div>
               <p id="ayuda" class="hidden">Para formar el signo ${nombre}, presionar punto ${cadena}</p>
               <p id="mensajeExcelente" class="hidden">¡Excelente!. Presione 1 para el siguiente signo.</p>
-              <p id="mensajeExcelenteTerminar" class="hidden">¡Felicidades!. Terminaste el módulo Practicar Signo. Presione 1 para terminar y regresar al menú de Practicar.</p>
+              <p id="mensajeExcelenteTerminar" class="hidden">¡Felicidades!. Terminaste el módulo Practicar Signo. Presione 1 para obtener tu puntuación.</p>
               <p id="mensajeIncorrecto" class="hidden">¡Incorrecto!. Presione 1 para volver a intentar, 2 para tener ayuda.</p>
               <div class="flex justify-center items-center h-full w-4/12 pb-[10vh]">
                   <p class="text-[40vh] font-serif font-medium">${signo}</p>
@@ -68,7 +68,25 @@ fetch('http://localhost:8080/signo')
 let cont = 0;
 let isExecuting = false;
 let codigoTablero;
+let contNum = 1;
+let circulos = [];
+let checkIncorrecto = false;
+let checkAyuda = false;
+
+let contCorrecto = 0;
+let contReintentar = 0;
+let contAyuda = 0;
+
+
+for (let i = 1; i <= 5; i++) {
+  const circulo = document.getElementById(i);
+  circulos.push(circulo)
+}
+
 const btnComprobar = document.getElementById('btnComprobar');
+const contador = document.getElementById("contador");
+
+
 
 window.isOpenVentana = false;
 
@@ -137,6 +155,7 @@ function obtenerCirculosPintados(){
 function validacion(){
   let numeroCodigo = window.divs[cont].codigo;
   let numeroTablero = parseInt(codigoTablero);
+  let check = document.getElementById(cont+1);
 
   if (numeroCodigo === numeroTablero ) {
     excelente.classList.add('opacity-100', 'pointer-events-auto', 'transition-opacity', 'duration-700');
@@ -147,10 +166,25 @@ function validacion(){
       window.voz("mensajeExcelente");
     }
     rpta = true;
+
+    if(!checkIncorrecto && !checkAyuda){
+      check.classList.add("text-green-600", "font-bold");
+      contCorrecto++;
+    }else if(checkIncorrecto){
+      check.classList.add("text-blue-600", "font-bold");
+      contReintentar++;
+    }else if(checkAyuda){
+      check.classList.add("text-red-600", "font-bold");
+      contAyuda++;
+    }
+    
+    check.textContent = "✓";
   } else {
     incorrecto.classList.add('opacity-100', 'pointer-events-auto', 'transition-opacity', 'duration-700');
     window.voz("mensajeIncorrecto");
     rpta = false;
+    
+
   }
 
   isOpenVentana = true;
@@ -163,9 +197,10 @@ function siguienteModulo() {
   if (rpta) {
       excelente.classList.remove('opacity-100', 'pointer-events-auto', 'transition-opacity', 'duration-1000');
       if (cont === window.divs.length - 1) {
-          window.location.href = './practicar.html';
+          window.location.replace("./resultadoPracticarSigno.html");
       } else {
           cont++;
+          contNum++;
           mostrarModulo();
           setTimeout(() => {
             guia();
@@ -180,22 +215,28 @@ function siguienteModulo() {
            guia();
            isChangingModule = false;
        }, 0); 
+       checkIncorrecto = true;
      }else{
        setTimeout(() => {
          ayuda();
          isChangingModule = false;
      }, 0); 
+     checkAyuda = true;
      }
   }
 
   isOpenVentana = false;
+
 }
 
 function mostrarModulo(){
   const modulo = document.getElementById('modulo');
   const div = window.divs[cont];
   modulo.innerHTML = div.html;
-  
+  contador.textContent = contNum;
+
+  checkIncorrecto = false;
+  checkAyuda = false;
 }
 
 function guia(){
@@ -205,6 +246,11 @@ function guia(){
 function ayuda(){
   window.speechSynthesis.cancel();
   window.voz("ayuda");
+  
 }
 
- 
+window.onbeforeunload = function() {
+  localStorage.setItem('contCorrecto', contCorrecto);
+  localStorage.setItem('contReintentar', contReintentar);
+  localStorage.setItem('contAyuda', contAyuda);
+};

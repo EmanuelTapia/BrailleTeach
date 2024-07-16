@@ -32,7 +32,6 @@ fetch('http://localhost:8080/abecedario')
               <p id="ayuda" class="hidden">Para formar la letra ${letra}, presionar punto ${cadena}</p>
               <p id="mensajeExcelente" class="hidden">¡Excelente!. Presione 1 para la siguiente letra</p>
               <p id="mensajeExcelenteTerminar" class="hidden">¡Felicidades!. Terminaste el módulo Practicar Abecedario. Presione 1 para obtener tu puntuación.</p>
-              <p id="" class="hidden">¡Felicidades!. Terminaste el módulo Practicar Abecedario. Presione 1 para terminar y regresar al menú de Practicar.</p>
               <p id="mensajeIncorrecto" class="hidden">¡Incorrecto!. Presione 1 para volver a intentar, 2 para tener ayuda.</p>
               <div class="flex justify-center items-center h-full w-4/12 pb-[10vh]">
                   <p class="text-[40vh] font-serif font-medium">${letra}</p>
