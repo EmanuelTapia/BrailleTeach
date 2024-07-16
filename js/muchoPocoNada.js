@@ -46,11 +46,11 @@ fetch('http://localhost:8080/muchopoconada')
                     <p class="text-[3vh] font-mono text-[#4A4444]">Identificar los números y ordenarlos</p>
 
                     <p id="pregunta" class="hidden">Pregunta ${cont}.</p>
-                    <p id="guia" class="hidden">${numero1} ${numero2} ${numero3}. Escoge una respuesta, opción ${letra1} ${opcion1}. Opción ${letra2} ${opcion2}. Opción ${letra3} ${opcion3}</p>
+                    <p id="guia" class="hidden">${numero1} ${numero2} ${numero3}. Opción ${letra1}, ${opcion1}. Opción ${letra2}, ${opcion2}. Opción ${letra3}, ${opcion3}</p>
 
-                    <p id="ayuda" class="hidden">${numero1} ${numero2} ${numero3} la respuesta era la opción ${respuesta}.Para formar la letra ${respuesta}, presionar punto ${cadena}</p>
+                    <p id="ayuda" class="hidden">${numero1} ${numero2} ${numero3}. La respuesta era la opción ${respuesta}. Para formar la letra ${respuesta}, presionar punto ${cadena}</p>
                     <p id="mensajeExcelente" class="hidden">¡Excelente!. Presione 1 para la siguiente pregunta</p>
-                    <p id="mensajeExcelenteTerminar" class="hidden">¡Felicidades!. Terminaste el juego Mucho - Poco - Nada. Presione 1 para obtener tu puntuación.</p>
+                    <p id="mensajeExcelenteTerminar" class="hidden">¡Felicidades!. Terminaste el juego Mucho-Poco-Nada. Presione 1 para obtener tu puntuación.</p>
                     <p id="mensajeIncorrecto" class="hidden">¡Incorrecto!. Presione 1 para volver a intentar, 2 para tener ayuda.</p>
                 </div>
                 
