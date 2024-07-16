@@ -12,6 +12,7 @@ modulo.innerHTML = `
             </div>
             <div class="flex justify-center items-center h-[15%] w-full">
                 <h1 class="text-[5vh] font-mono font-bold text-[#4A4444] tracking-[0.7vh]">RESULTADO</h1>
+                <p class="hidden">Resultado, respondiste ${correcto} correcto, ${correcto*20} puntos, ${reintentar} reintentado, ${reintentar*10} puntos, y ${conAyuda} con ayuda, ${conAyuda*5} puntos. Tu puntuación final es ${puntacion} puntos. Presione 1 para regresar al menú de practicar.</p>
             </div>
             <div class="flex h-[10%]">
 
@@ -86,3 +87,13 @@ modulo.innerHTML = `
 `;
 
 };
+
+
+document.addEventListener('keydown', function(event) {
+  
+      if(event.key.toLowerCase() === 'f'){
+        window.speechSynthesis.cancel();  
+        window.location.replace("./practicar.html");
+        
+      };
+})
