@@ -33,27 +33,22 @@ fetch('http://localhost:8080/sonidoanimal')
 
                 <div class="flex justify-center items-center space-x-[5vh] h-[25%] w-full ">
                     <button onclick="guia()" class="transition hover:scale-75"><img src="./ico/ico-sonido.png" alt="ico-sonido" class=" size-[8vh]"></button>
-                    <p class="text-[3vh] font-mono text-[#4A4444]">Resuelve la siguiente operación matemática</p>
+                    <p class="text-[3vh] font-mono text-[#4A4444]">Qué animal hace ese sonido:</p>
 
                     <p id="pregunta" class="hidden">Pregunta ${cont}.</p>
-                    <p id="guia" class="hidden"></p>
                     <audio id="miAudio">
                         <source src="data:audio/mpeg;base64,${sonido}" type="audio/mpeg">
                         <!-- Agrega más formatos de audio aquí si es necesario -->
                     </audio>
 
-                    <p id="ayuda" class="hidden">s igual a ${respuesta}.Para formar el número ${respuesta}, presionar punto ${cadena}</p>
+                    <p id="ayuda" class="hidden">El animal es un ${nombre} y la primera letra es, ${respuesta}. Para formar la letra ${respuesta}, presionar punto ${cadena}</p>
                     <p id="mensajeExcelente" class="hidden">¡Excelente!. Presione 1 para la siguiente pregunta</p>
-                    <p id="mensajeExcelenteTerminar" class="hidden">¡Felicidades!. Terminaste el juego Operaciones Matemáticas. Presione 1 para obtener tu puntuación.</p>
+                    <p id="mensajeExcelenteTerminar" class="hidden">¡Felicidades!. Terminaste el juego Sonido Animales. Presione 1 para obtener tu puntuación.</p>
                     <p id="mensajeIncorrecto" class="hidden">¡Incorrecto!. Presione 1 para volver a intentar, 2 para tener ayuda.</p>
                 </div>
                 
-                <div class="flex justify-center items-center h-[50%] w-full space-x-[8vh]">
-                    <p class="text-[10vh] font-mono "></p>
-                    <p class="text-[10vh] font-mono "></p>
-                    <p class="text-[10vh] font-mono "></p>
-                    <p class="text-[10vh] font-mono ">=</p>
-                    <p class="text-[10vh] font-mono ">?</p>
+                <div class="flex justify-center items-center h-[65%] w-full ">
+                    <img src="data:image/png;base64,${imagen}" alt="img-${nombre}" class=" size-[40vh]">
                 </div>
             </div>
             
@@ -78,8 +73,10 @@ fetch('http://localhost:8080/sonidoanimal')
       mostrarModulo();
       cont++;
   });
-  pregunta();
-  window.audio("miAudio");
+  voz("pregunta", () => {
+    const miAudio = document.getElementById('miAudio');
+    miAudio.play();
+  });
 })
   .catch(error => console.error('Error:', error));
 
@@ -218,14 +215,16 @@ function siguienteModulo() {
   if (rpta) {
       excelente.classList.remove('opacity-100', 'pointer-events-auto', 'transition-opacity', 'duration-1000');
       if (cont === window.divs.length - 1) {
-          window.location.replace("./resultadoOperacionesMatematicas.html");
+          window.location.replace("./resultadoSonidoAnimales.html");
       } else {
           cont++;
           contNum++;
           mostrarModulo();
           setTimeout(() => {
-            pregunta();
-            guia();
+            voz("pregunta", () => {
+              const miAudio = document.getElementById('miAudio');
+              miAudio.play();
+            });
             isChangingModule = false;
         }, 0); // Retrasar la reproducción de la guía para asegurar que el DOM esté completamente actualizado
       }
@@ -262,8 +261,11 @@ function mostrarModulo(){
 }
 
 function guia(){
+  window.speechSynthesis.cancel();
   const miAudio = document.getElementById('miAudio');
 
+  miAudio.pause();
+  miAudio.currentTime = 0; // Reiniciar el audio al principio
   miAudio.play();
 }
 function pregunta(){
@@ -272,7 +274,16 @@ function pregunta(){
 
 function ayuda(){
   window.speechSynthesis.cancel();
-  window.voz("ayuda");
+  const miAudio = document.getElementById('miAudio');
+
+  miAudio.pause();
+  miAudio.currentTime = 0; // Reiniciar el audio al principio
+  miAudio.play();
+  // Agregar un evento 'ended' para el audio
+  miAudio.addEventListener('ended', function() {
+    window.voz("ayuda");
+  });
+  
   
 }
 
@@ -282,3 +293,17 @@ window.onbeforeunload = function() {
   localStorage.setItem('contAyuda', contAyuda);
 };
 
+
+
+function voz(id, callback) {
+  const texto = document.getElementById(id).textContent;
+  const utterance = new SpeechSynthesisUtterance(texto);
+
+  utterance.onend = function(event) {
+    if (callback) {
+      callback();
+    }
+  };
+
+  window.speechSynthesis.speak(utterance);
+}
