@@ -14,3 +14,8 @@ window.mensaje = function(texto){
     
     window.speechSynthesis.speak(mensaje);
 }
+
+window.audio = function(ruta) {
+    const audio = document.getElementById(ruta);
+    audio.play();
+}
